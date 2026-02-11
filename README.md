@@ -65,92 +65,56 @@ pip install numpy pandas scikit-learn torch matplotlib notebook
 
 ### Step 1 — Generate Dataset (Grasshopper)
 
-Open:
+Open the Grasshopper definition:
 
-```text
-Grasshopper/Generate dataset.gh
-```
+    Grasshopper/Generate dataset.gh
 
-Steps:
+Before running the script, configure the following parameters in Grasshopper:
 
-1. Open Rhino 8
-2. Open Grasshopper
-3. Load `Generate dataset.gh`
-4. Run the definition
-5. Export dataset to file (JSON or CSV)
+- Set the output path where the dataset will be saved  
+- Define the cross-section types  
+- Define the geometric parameter ranges  
+- Set the number of sample points  
+- Define the scale range  
+- Define the rotation range  
 
-This dataset will be used for model training.
+Run the Grasshopper definition to generate the dataset.
+
 
 ---
 
 ### Step 2 — Train the Model
 
-Open:
+Open the training notebook:
 
-```text
-End-Point_ML_training.ipynb
-```
+    End-Point_ML_training.ipynb
 
-Start Jupyter Notebook:
+Before running the notebook:
 
-```bash
-jupyter notebook
-```
+- Set the input file path to the training dataset  
+- Set the desired number of points in the point cloud  
 
-Then:
+Run all cells in the notebook.
 
-1. Open the notebook
-2. Update dataset path if necessary
-3. Run all cells
-
-This will generate a trained model file.
-
-Example output:
-
-```text
-trained_model.pkl
-```
+The trained model will be saved in the same directory as the input datasets.
 
 ---
 
-### Step 3 — Run the Trained Model
+### Step 3 — Run the Trained Model (Grasshopper)
 
-Run:
-
-```bash
-python Run_Trained_model.py
-```
-
-This script will:
-
-* Load the trained model
-* Load input data
-* Predict analytical axis
-
----
-
-### Step 4 — Use Model in Grasshopper
-
-The Grasshopper plugin must be built from the **Plug-In-GH branch**.
-
-Open:
-
+To run the trained model, use the Grasshopper plugin located in the `Plug-In-GH` branch.
 [https://github.com/larsolavtoppe/Predict-Analytical-Axis/tree/Plug-In-GH](https://github.com/larsolavtoppe/Predict-Analytical-Axis/tree/Plug-In-GH)
 
-Steps:
+Save the file:
 
-1. Open the Visual Studio project
-2. Build the solution
-3. Locate the generated `.gha` file
-4. Copy the `.gha` file to:
+    Run_Trained_model.py
 
-```text
-C:\Users\YOUR_USERNAME\AppData\Roaming\Grasshopper\Libraries\
-```
+In the plugin, provide file paths to:
 
-5. Restart Rhino and Grasshopper
+- The trained model file  
+- `Run_Trained_model.py`  
 
-The plugin will now be available inside Grasshopper.
+Then run the component in Grasshopper to execute the model.
 
 ---
 
@@ -172,7 +136,10 @@ These files demonstrate:
 
 ## Dataset
 
-The dataset is not included in this repository due to its large size.
+The dataset is not included in this repository due to its size.
+
+The dataset can be provided upon request from the authors.
+
 
 ---
 
@@ -190,8 +157,3 @@ Grasshopper → Use model via plugin
 
 ---
 
-## Notes
-
-* Ensure correct file paths are set in scripts
-* Plugin must be rebuilt if model integration changes
-* Restart Rhino after installing plugin
